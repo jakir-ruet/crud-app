@@ -1,0 +1,6 @@
+requirement of this application
+to develop a crud application using ExpressJS, NodeJS & MongoDB.
+to design a model by using the only three field such as name, age, email.
+where email & id is the primary key for the purpose identification the user.
+you must develop a crud using as identity field is email.
+the project must be complete using the MVC pattern.
