@@ -3,5 +3,6 @@ const userController = require('../controller/userController');
 
 router
     .post('/create', userController.createUser)
-    .get('/find', userController.findUser);
+    .get('/find', userController.findUser)
+    .post('/update', userController.updateUser);
 module.exports = {router};
