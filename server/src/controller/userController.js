@@ -9,7 +9,17 @@ const userController = {
                     .then(() => res.status(201).send('User created'))
                     .catch(err => res.status(400).send('User already exists'));
             })();
+    },
+    findUser: ({ body: {email} }, res) => {
+        User.findOne({email}, (err, doc) => {
+            err ? (() => {throw err})():
+                !doc ? res.status(404).send('email not found'):
+                    (() => {
+                        User.findOne({ email }, {}, (err, doc) => {
+                            err ? (() => {throw err})(): res.status(200).json(doc);
+                        });
+                    })();
+        })
     }
 }
-User.find({}, (error, result) => console.log(result))
 module.exports = userController;
