@@ -20,6 +20,19 @@ const userController = {
                         });
                     })();
         })
+    },
+    updateUser: ({ body: {email, update} }, res) => {
+        User.findOne({email}, (err, doc) => {
+            err ? (() => {throw err})():
+                !doc ? res.status(400).send('email not found'):
+                    !update ? res.status(400).send('update required for updating'):
+                        update.email ? res.status(400).send('You cannot update email') :(() => {
+                        User.findOneAndUpdate({ email }, update)
+                            .then(() => res.status(200).send('User updated'))
+                            .catch(err => res.status(400).send(`Error occured: ${err.message}`))
+                        })();
+        })
     }
 }
+
 module.exports = userController;
