@@ -1,12 +1,12 @@
 {
-  "port": 5010,
+  "port": 5001,
   "hostname": "localhost",
   "corsConfig": {
-    "method": ["GTE", "POST"],
+    "method": ["GET", "POST"],
     "origin": "http:localhost:3001"
   },
   "dbConfig": {
     "dbUri": "mongodb://localhost:27017",
-    "dbName": "bdCrud"
+    "dbName": "dbCrud"
   }
 }
