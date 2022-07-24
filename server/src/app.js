@@ -16,7 +16,7 @@ app.use(router);
 //listing configuration
 const PORT = config.port || 8080;
 http.createServer(app).listen(PORT, config.hostname, () => {
-    console.log(`listing the port at http://localhost:${PORT}`)
+    console.log(`app listening at http://localhost:${PORT}`)
 });
 dbConnection();
 console.log('Database Connection');
