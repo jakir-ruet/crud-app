@@ -32,6 +32,14 @@ const userController = {
                             .catch(err => res.status(400).send(`Error occured: ${err.message}`))
                         })();
         })
+    },
+    deleteUser: ({body: {email}}, res) => {
+        User.findOne({email}, {}, (err, doc) => {
+            err ? (() => console.log(err.message))():
+                !doc ? res.status(400).send('email not found'):
+                    User.findOneAndDelete({ email })
+                        .then(() => res.status(200).send('User deleted'))
+        });
     }
 }
 
