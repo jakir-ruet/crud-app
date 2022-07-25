@@ -10,7 +10,7 @@ const app = express();
 
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(router);
 
 //listing configuration
@@ -20,5 +20,3 @@ http.createServer(app).listen(PORT, config.hostname, () => {
 });
 dbConnection();
 console.log('Database Connection');
-
-
