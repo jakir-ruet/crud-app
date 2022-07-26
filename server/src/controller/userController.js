@@ -29,7 +29,7 @@ const userController = {
                         update.email ? res.status(400).send('You cannot update email') :(() => {
                         User.findOneAndUpdate({ email }, update)
                             .then(() => res.status(200).send('User updated'))
-                            .catch(err => res.status(400).send(`Error occured: ${err.message}`))
+                            .catch(err => res.status(400).send(`Error occurred: ${err.message}`))
                         })();
         })
     },
