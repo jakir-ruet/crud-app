@@ -40,7 +40,31 @@ const userController = {
                     User.findOneAndDelete({ email })
                         .then(() => res.status(200).send('User deleted'))
         });
+    },
+    deleteMany: ({body: { emails }}) => {
+        User.findOne({email}, {}, (err, doc) => {
+            err ? (() => console.log(message))() :
+                !doc ? res.status(400).send('email not found') :
+                    User.findOneAndDelete({email})
+                        .then(() => res.status(200).send('User deleted'))
+        });
+    },
+    updateMany: ({body: {emails, updates}}) => {
+        for (let update of updates)
+        for (let email of emails){
+            User.findOne({email}, (err, doc) => {
+                err ? (() => {throw err})():
+                    !doc ? res.status(400).send('email not found'):
+                        !update ? res.status(400).send('update required for updating'):
+                            update.email ? res.status(400).send('You cannot update email') :(() => {
+                                User.findOneAndUpdate({ email }, update)
+                                    .then(() => res.status(200).send('User updated'))
+                                    .catch(err => res.status(400).send(`Error occured: ${err.message}`))
+                            })();
+            })
+        }
     }
 }
+
 
 module.exports = userController;
