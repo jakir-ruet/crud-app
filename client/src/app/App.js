@@ -1,10 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import Index from "../components/indexComponent";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import CreatePage from "../components/createPage";
 
 const App = () => {
   return (
     <>
-      <h1>Hello World!</h1>
+      <Router>
+        <Routes>
+            <Route path={"/"} element={<Index/>}/>
+            <Route path={"/create"} element={<CreatePage/>}/>
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -1,0 +1,98 @@
+@import "vars";
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+  border-radius: 26px;
+  padding-top: 1px;
+  padding-left: 490px;
+  margin-top: 7px;
+  margin-left: 190px;
+  box-shadow: -3px -3px 14px $verylightgray,  3px 3px 6px white;
+
+}
+
+@mixin td-th{
+  text-align: left;
+  padding: 8px;
+}
+
+@mixin buttons{
+  color: white;
+  border-radius: 6px;
+  transition: 1s;
+  cursor: pointer;
+  border: 3px solid gray;
+}
+
+td {
+  @include td-th;
+}
+tr {
+  &:nth-child(even){
+    background: $verylightgray;
+  }
+  td {
+    cursor: text;
+  }
+
+}
+th {
+  @include td-th;
+}
+button.edit,
+input.edit
+{
+  @include buttons;
+  background-color: $warn;
+  &:hover {
+    background-color: $info;
+    content: "Read";
+    border: 7px solid $info;
+    border-radius: 8px;
+    +button {
+      margin-left: 34px;
+    }
+  }
+  + button {
+    margin-left: 20px;
+  }
+}
+button.delete,
+input.delete
+{
+  @include buttons;
+  background-color: $error;
+  &:hover {
+    background-color: $primary;
+    border-radius: 8px;
+    + button.create{
+      margin-left: 18.7px;
+    }
+  }
+  + button.create{
+    margin-left: 10px;
+  }
+}
+button.create,
+input.create{
+  @include buttons;
+  margin-top: 40px;
+  margin-left: 200px;
+  test-align: center;
+  color: $white;
+  background: $primary;
+  &:hover {
+    background-color: $success;
+    content: "Read";
+    border: 7px solid $info;
+    +button {
+      margin-left: 34px;
+    }
+    border-radius: 8px;
+  }
+  + button {
+    margin-left: 20px;
+  }
+}
