@@ -20,13 +20,13 @@ const Index = () => {
                     <div className="row">
                         <table className="table table-striped table-hover mb-0">
                             <thead>
-                            <tr className="pt-2 pb-2">
-                                <th className="text-center align-middle">SL</th>
-                                <th className="text-center align-middle">Name</th>
-                                <th className="text-center align-middle">Age</th>
-                                <th className="text-center align-middle">Email</th>
-                                <th className="text-center align-middle">Actions</th>
-                            </tr>
+                                <tr className="pt-2 pb-2">
+                                    <th className="text-center align-middle">SL</th>
+                                    <th className="text-center align-middle">Name</th>
+                                    <th className="text-center align-middle">Age</th>
+                                    <th className="text-center align-middle">Email</th>
+                                    <th className="text-center align-middle">Actions</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>

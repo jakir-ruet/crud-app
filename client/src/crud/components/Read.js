@@ -10,7 +10,7 @@ const Index = () => {
                             <span className="fw-bold">Student Table</span>
                         </div>
                         <div className="ms-auto p-1">
-                            <a href="/read" className="btn btn-warning">
+                            <a href="/create" className="btn btn-warning">
                                 <i className="bi bi-person-plus"></i> Create
                             </a>
                         </div>
