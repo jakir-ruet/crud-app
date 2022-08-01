@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="container">
         <Routes>
-            <Route path="/" element={<Index/>}/>
+            <Route path="/" element={<Index data={[{name: "Tahmid", age: 9, email: "tm.ahad@gmail.com"}]}/>}/>
             <Route path="/create" element={<Create/>}/>
             <Route path="/read" element={<Read/>}/>
             <Route path="/edit" element={<Create/>}/>

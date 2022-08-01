@@ -1,33 +1,30 @@
 const { Schema, model } = require('mongoose');
 const validator = require('validator');
+const {validators} = require("../validator/validators");
 
 const userSchema = new Schema({
     name: {
         type: [String, 'name must be a string'],
-        trim: true,
-        minlength: [2, 'min length is 3'],
-        maxlength: [20, 'max length is 20'],
-        required: [true, 'name is required'],
+        validate: {
+            validator: value => validators.nameValidator(value).bool,
+            message: ({ value }) => validators.nameValidator(value).message
+        },
     },
     age: {
         type: [Number, 'age must be a number'],
-        min: [3, 'min age is 3'],
-        max: [80, 'max age is 80'],
-        required: [true, 'age is required'],
+        validate: {
+            validator: value => validators.ageValidator(value).bool,
+            message: ({ value }) => validators.ageValidator(value).message
+        },
     },
     email: {
         type: String,
         trim: true,
-        minlength: [3, 'min length is 3'],
-        maxlength: [50, 'max length is 20'],
-        required: [true, 'email is required'],
         unique: [true, 'email is unique'],
         validate: {
-            validator: function (value) {
-                return validator.isEmail(value);
-            },
-            message: 'Enter a valid email address'
-        }
+            validator: value => validators.emailValidator(value).bool,
+            message: ({ value }) => validators.emailValidator(value).message
+        },
     }
 })
 const User = model('User', userSchema);
