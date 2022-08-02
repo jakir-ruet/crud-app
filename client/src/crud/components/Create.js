@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
-import {post, get} from "axios";
-
+import axiosIntance from "../../AxiosIntances/axiosIntance";
 
 const Create = () => {
     const [state, setState] = useState({
@@ -8,6 +7,19 @@ const Create = () => {
         age: null,
         email: ""
     });
+    const [response, setResponse] = useState({
+        status: null,
+        stausText: null,
+        data: null,
+    });
+    const handleCreateStudent = async () => {
+        fetch('http://localhost:8080/create', {
+            method: "POST",
+            body: JSON.stringify(state)
+        }).then(async res => console.log(await res.json()))
+            .catch(err => { throw err; })
+    };
+
     const handleName = e => {
         setState(({age, email}) => {
             return {name: e.target.value, age, email};
@@ -43,27 +55,22 @@ const Create = () => {
                             <div className={"mt-4"}>
                                 <div className="form-group">
                                     <label htmlFor="name">Name</label>
-                                    {console.log('redering name Input')}
                                     <input type="text" className="form-control" placeholder="Enter your name" onChange={handleName}
                                            required={true}/>
                                 </div>
                                 <div className="form-group pt-2">
                                     <label htmlFor="name">Age</label>
-                                    {console.log('redering age Input')}
                                     <input type="number" className="form-control" placeholder="Enter your age" onChange={handleAge}
                                            required={true}/>
                                 </div>
                                 <div className="form-group pt-2">
                                     <label htmlFor="name">Email</label>
-                                    {console.log('redering email Input')}
                                     <input type="email" className="form-control" placeholder="Enter your email" onChange={handleEmail}
                                            required={true}/>
                                 </div>
                                 <div className="form-group text-end pt-3">
-                                    <button className="btn btn-primary">
-                                        <i className="bi bi-plus" onClick={() => {
-                                            post('localhost:5001/create', state)
-                                        }}></i>Add Student
+                                    <button className="btn btn-primary" onClick={handleCreateStudent}>
+                                        <i className="bi bi-plus" ></i>Add Student
                                     </button>
                                 </div>
                             </div>

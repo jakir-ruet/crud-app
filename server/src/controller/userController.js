@@ -6,7 +6,7 @@ const userController = {
         User.findOne({email}, (err, doc) => {
             (!body || Object.keys(body).length === 0)
                 ? res.status(404).send('All data required'):
-                doc ? res.stale(400).send('User Allready exists'): (() => {
+                doc ? res.status(400).send('User Allready exists'): (() => {
                     User.create({ name, age, email })
                         .then(() => res.status(201).send('User created'))
                         .catch(err => res.status(400).send(err) )

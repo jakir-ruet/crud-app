@@ -5,13 +5,18 @@ const config = require('./config/config.json');
 const http = require('http');
 const { router } = require("./routes/userRouter.js");
 const { dbConnection } = require("./config/dbConnection.js");
+const cors = require('cors');
 
 const app = express();
+
+
 
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(router);
+app.use(cors(config.corsConfig));
+
 
 //listing configuration
 const PORT = config.port || 8080;

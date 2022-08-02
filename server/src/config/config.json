@@ -1,9 +1,9 @@
 {
-  "port": 5001,
+  "port": 8080,
   "hostname": "localhost",
   "corsConfig": {
     "method": ["GET", "POST"],
-    "origin": "http:localhost:3001"
+    "origin": "http://localhost:3000"
   },
   "dbConfig": {
     "dbUri": "mongodb://localhost:27017",

@@ -2,7 +2,6 @@ const validator = require('validator');
 
 const validators = {
     nameValidator: name => {
-        console.log('name ', name);
         const nameLength = name[0].length;
         let returnObj = {
             bool: ((nameLength >= 2) && nameLength <= 20 && name),
@@ -20,7 +19,6 @@ const validators = {
         return {...returnObj};
     },
     ageValidator: age => {
-        console.log('age ', age);
         let returnObj = {
             bool: (age >= 2) && age <= 20 && age,
             message: null
@@ -37,7 +35,6 @@ const validators = {
         return {...returnObj};
     },
     emailValidator: email => {
-        console.log('email ', email);
         const emailLength = email.length;
         let returnObj = {
             bool: (emailLength >= 2) && emailLength <= 20 && email && validator.isEmail(email) ,
